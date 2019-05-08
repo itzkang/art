@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/artTemplate.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script type="text/html" id="temp">
+       <!--  {{ if status == 4}}
+            
+        <h3>我请求成功了</h3>
+        {{ else if status == 3 }}
+        <h3>请求已发送,不要急</h3>
+        {{else}}
+        <h3>服务器已接收请求</h3>
+        {{/if}}
+ -->
+        {{ if status == 4}}
+            {{ if readyStatus == 200 }}
+                <h3>我请求成功了</h3>
+            {{ else if readyStatus == 404 }}
+                <h3>页面被偷走了</h3>
+            {{else}}
+            <h3>请联系我</h3>
+            {{/if}}
+
+            {{ else if status == 3 }}
+            <h3>请求请求</h3>
+         {{/if}}
+
+    </script>
+
+    <script>
+        let data = {
+            status: 3,
+            readyStatus: 401
+        }
+
+        let artHtml = template("temp", data);
+        document.getElementById("container").innerHTML = artHtml; 
+
+    </script>
+</body>
+</html>

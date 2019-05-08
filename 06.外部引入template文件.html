@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外部引入template文件</title>
+    <script src="./js/jquery-3.4.0.min.js"></script>
+    <script src="./js/artTemplate.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul li{
+        list-style: none;
+    }
+    .nav{
+        width: 100%;
+        height: 40px;
+        background: black;
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        font-weight: 600;
+    }
+    .nav ul{
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav ul li{
+        width: 10%;
+    }
+</style>
+<body>
+    <div class="nav" id="nav">
+      
+    </div>
+
+    <script>
+        let data = {
+            navInfo:[
+                {nav: "首页"},
+                {nav: "生活"},
+                {nav: "HTML"},
+                {nav: "JS"},
+                {nav: "JQuery"},
+                {nav: "ES6"},
+                {nav: "Vue"},
+                {nav: "React "}
+            ]
+        }
+
+        $.get("nav.art",function(html){
+            let render = template.compile(html);
+            console.log(render);
+
+            let content = render(data);
+            document.getElementById("nav").innerHTML = content;
+        });
+        
+    </script>
+</body>
+</html>

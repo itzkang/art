@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>artTemplate过滤器</title>
+    <script src="./js/artTemplate.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/html" id="temp">
+    <ul>
+        {{each info val }}
+            <li>
+                {{ val.name }} {{ fn(val.gender) }}
+            </li>
+        {{/each}}
+    </ul>
+    </script>
+    <script>
+        //模拟数据
+        let data = {
+            info:[
+                {name:"小明",gender:1},
+                {name:"小花",gender:0},
+                {name:"小红",gender:0},
+                {name:"小小",gender:1},
+                {name:"笑笑",gender:1}
+        ]}
+        //定义过滤器
+        template.defaults.imports.fn = gender =>{
+            if (gender == 0) {
+                return "女";
+            }else if(gender == 1){
+                return "男";
+            }
+        }
+
+
+        let artHtml = template("temp",data);
+        document.getElementById("container").innerHTML = artHtml;
+
+        console.log(artHtml);
+    </script>
+</body>
+</html>

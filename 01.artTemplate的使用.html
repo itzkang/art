@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>artTemplate的使用</title>
+    <script src="./js/artTemplate.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script type="text/html" id="temp">
+        <h1>{{ title }}</h1>
+        <p>{{ content }}</p>
+        <input type="text" value="{{ value }}">
+    </script>
+
+    <script>
+    let data = {
+        title: '我是一级标题',
+        content: '我是内容',
+        value: '我是value值'
+    }
+    let artHtml = template("temp",data);
+    document.getElementById("container").innerHTML = artHtml;
+    </script>
+</body>
+</html>
